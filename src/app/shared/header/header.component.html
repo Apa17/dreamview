@@ -5,14 +5,20 @@
     </figure>
     <nav>
       <ul>
-        <li><a routerLink="/" routerLinkActive="active">Destacadas</a></li>
-        <li>
+        <li class="destacadas">
+          <a routerLink="/" routerLinkActive="active">Destacadas</a>
+        </li>
+        <li class="cartelera">
           <a routerLink="/cartelera" routerLinkActive="active">Cartelera</a>
         </li>
-        <li>
-          <a routerLink="/comprar-ticket" routerLinkActive="active"
-            >Comprar ticket</a
+        <li class="comprar">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="goToComprarTickets()"
           >
+            Comprar ticket
+          </button>
         </li>
       </ul>
     </nav>
