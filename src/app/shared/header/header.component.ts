@@ -9,8 +9,11 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   constructor(private router: Router) {}
 
+  goToHome() {
+    this.router.navigateByUrl('');
+  }
+
   goToComprarTickets() {
-    console.log('Comprar Tickets');
-    this.router.navigateByUrl('comprar-tickets');
+    this.router.navigateByUrl('comprar-tickets/');
   }
 }

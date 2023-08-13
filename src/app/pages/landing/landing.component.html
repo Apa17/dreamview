@@ -1,31 +1,78 @@
-<main class="bg">
+<main
+  class="bg"
+  [ngStyle]="{ 'background-image': 'url(' + movies[index].images[0] + ')' }"
+>
   <div class="carousel-box">
-    <div class="carousel-left-button"></div>
+    <div
+      class="carousel-move-button left-move"
+      [style.visibility]="index === 0 ? 'hidden' : 'visible'"
+    >
+      <img
+        src="../../../assets/less-than.png"
+        alt="left arrow"
+        (click)="previousMovie()"
+        class="clickable"
+        tabindex="4"
+        (keyup.enter)="previousMovie()"
+      />
+    </div>
     <div class="carousel-middle">
       <div class="carousel-image">
-        <img src="../../../assets/john wick.png" alt="john wick photo" />
-        <div class=""></div>
+        <div class="score">
+          <img src="../../../assets/star-filled.svg" alt="star filled" />
+          <p>
+            <span>{{ movies[index].rating }}</span
+            >/10
+          </p>
+          <p class="imdb">IMDB</p>
+        </div>
+        <img
+          [src]="movies[index].poster"
+          [alt]="movies[index].title + ' poster photo'"
+          class="main-photo"
+        />
       </div>
       <div class="carousel-text-buttons">
         <div class="carousel-title-and-text">
-          <h1>John Wick 4</h1>
-          <p>
-            John Wick 4 comienza con el personaje del título (Keanu Reeves)
-            huyendo de nuevo mientras tiene a cientos de asesinos pisándole los
-            talones. El villano principal de la serie es el Marqués de Gramont
-            (Bill Skarsgård), un líder de la Alta Mesa que sigue aumentando la
-            recompensa por la cabeza de Wick mientras también arregla algunos
-            asuntos dentro de la organización, incluyendo la posible eliminación
-            de Winston Scott (Ian McShane) y algunas de las decisiones que tomó
-            en el pasado.
-          </p>
+          <h1>{{ movies[index].title }}</h1>
+          <div class="subrayado"></div>
+          <ng-container
+            *ngFor="let texto of movies[index].description.split('.')"
+          >
+            <p *ngIf="texto !== ''">{{ texto }}.</p>
+          </ng-container>
         </div>
         <div class="carousel-buttons">
-          <button mat-raised-button color="primary">Ver trailer</button>
-          <button mat-raised-button color="primary">Comprar ticket</button>
+          <a href="https://www.youtube.com/watch?v=2AUmvWm5ZDQ" tabindex="5">
+            <img src="../../../assets/Play.png" alt="Ver trailer logo" />
+            <p>Ver trailer</p>
+          </a>
+          <a
+            [routerLink]="'/comprar-tickets/' + index"
+            routerLinkActive="active"
+            tabindex="6"
+          >
+            <img
+              src="../../../assets/Movie Ticket.png"
+              alt="comprar tickets logo"
+            />
+            <p>Comprar ticket</p>
+          </a>
         </div>
       </div>
     </div>
-    <div class="carousel-right-button"></div>
+    <div
+      class="carousel-move-button right-move"
+      [style.visibility]="index === 4 ? 'hidden' : 'visible'"
+    >
+      <img
+        src="../../../assets/more-than.png"
+        alt="right arrow"
+        class="clickable"
+        tabindex="7"
+        (click)="nextMovie()"
+        (keyup.enter)="nextMovie()"
+      />
+    </div>
   </div>
 </main>

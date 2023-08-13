@@ -1,21 +1,32 @@
 <header>
   <div class="container">
-    <figure>
-      <img src="./../../../assets/logo.svg" alt="Logo" />
-    </figure>
+    <a
+      tabindex="0"
+      (click)="goToHome()"
+      (keyup.enter)="goToHome()"
+      class="dream-view-logo"
+    >
+      <img src="./../../../assets/logo.svg" alt="Logo" class="logo" />
+    </a>
     <nav>
       <ul>
         <li class="destacadas">
-          <a routerLink="/" routerLinkActive="active">Destacadas</a>
+          <a routerLink="/" routerLinkActive="active" tabindex="1"
+            >Destacadas</a
+          >
         </li>
         <li class="cartelera">
-          <a routerLink="/cartelera" routerLinkActive="active">Cartelera</a>
+          <a routerLink="/cartelera" routerLinkActive="active" tabindex="2"
+            >Cartelera</a
+          >
         </li>
         <li class="comprar">
           <button
             mat-raised-button
             color="primary"
             (click)="goToComprarTickets()"
+            tabindex="3"
+            (keyup.enter)="goToComprarTickets()"
           >
             Comprar ticket
           </button>
