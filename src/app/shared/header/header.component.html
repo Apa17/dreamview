@@ -1,20 +1,44 @@
 <header>
   <div class="container">
-    <figure>
-      <img src="./../../../assets/logo.svg" alt="Logo" />
-    </figure>
+    <a tabindex="0" href="#landing" class="dream-view-logo">
+      <img src="./../../../assets/logo.svg" alt="Logo" class="logo" />
+    </a>
     <nav>
       <ul>
-        <li><a routerLink="/" routerLinkActive="active">Destacadas</a></li>
-        <li>
-          <a routerLink="/cartelera" routerLinkActive="active">Cartelera</a>
+        <li class="destacadas">
+          <a href="#landing" tabindex="1">Destacadas</a>
         </li>
-        <li>
-          <a routerLink="/comprar-ticket" routerLinkActive="active"
-            >Comprar ticket</a
+        <li class="cartelera">
+          <a href="#cartelera" tabindex="2">Cartelera</a>
+        </li>
+        <li class="comprar">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="goToComprarTickets()"
+            tabindex="3"
+            (keyup.enter)="goToComprarTickets()"
           >
+            Comprar ticket
+          </button>
         </li>
       </ul>
     </nav>
+
+    <a [matMenuTriggerFor]="menu" class="menu">
+      <mat-icon [ngStyle]="{ color: 'white' }" class="icon">menu</mat-icon>
+    </a>
   </div>
 </header>
+<mat-menu #menu="matMenu">
+  <a mat-menu-item href="#landing" tabindex="1">Destacadas</a>
+  <a mat-menu-item href="#cartelera" tabindex="2">Cartelera</a>
+  <button
+    mat-menu-item
+    (click)="goToComprarTickets()"
+    tabindex="3"
+    (keyup.enter)="goToComprarTickets()"
+  >
+    Comprar ticket
+  </button>
+</mat-menu>

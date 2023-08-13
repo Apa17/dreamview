@@ -5,13 +5,15 @@ import { Movie } from 'src/app/models/movies';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  selector: 'app-cartelera',
+  templateUrl: './cartelera.component.html',
+  styleUrls: ['./cartelera.component.scss']
 })
-export class LandingComponent implements OnInit {
+export class CarteleraComponent implements OnInit {
   photo = '../../../assets/landing-background.png';
   movies: Movie[] = [];
+  numbersTopRow = [0, 1, 2, 3, 4];
+  numbersBottomRow = [5, 6, 7, 8, 9];
   index = 0;
   constructor(
     private router: Router,
@@ -21,22 +23,8 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.movieservice.getMovies().subscribe((peliculas) => {
-      console.log(peliculas);
-      this.movies = this.movies.concat(peliculas);
-    });
-  }
-
-  goToComprarTickets() {
-    this.router.navigate(['/comprar-tickets']);
-  }
-
-  previousMovie() {
-    this.index--;
-  }
-
-  nextMovie() {
-    this.index++;
-    console.log(this.movies);
+    this.movieservice
+      .getMovies()
+      .subscribe((peliculas) => (this.movies = this.movies.concat(peliculas)));
   }
 }

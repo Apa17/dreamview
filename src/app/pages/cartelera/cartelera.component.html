@@ -1,0 +1,23 @@
+<section>
+  <h1>En cartelera</h1>
+  <div class="row">
+    <app-item
+      *ngFor="let number of numbersTopRow"
+      [movie]="movies[number]"
+      [number]="number"
+      class="item"
+    >
+    </app-item>
+    <app-item
+      *ngFor="let number of numbersBottomRow"
+      [movie]="movies[number]"
+      [number]="number"
+      class="item"
+    ></app-item>
+  </div>
+  <img
+    class="pop-in-background"
+    alt="pop in background"
+    src="../../../assets/pop.png"
+  />
+</section>

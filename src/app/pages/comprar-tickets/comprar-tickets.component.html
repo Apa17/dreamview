@@ -1,0 +1,161 @@
+<img
+  class="pop-in-background"
+  alt="pop background image"
+  src="../../../assets/pop.png"
+  [ngClass]="popVisible ? '' : 'd-none'"
+/>
+<img
+  class="pop-tarro-in-background"
+  alt="pop tarro in background"
+  src="../../../assets/pop-tarro.png"
+  [ngClass]="popVisible ? '' : 'd-none'"
+/>
+<img
+  class="pop-in-background-mobile"
+  alt="pop background image"
+  src="../../../assets/pop-mobile.png"
+  [ngClass]="popVisible ? '' : 'd-none'"
+/>
+<main>
+  <h1 *ngIf="!ticketComprado">Comprar Ticket</h1>
+  <p *ngIf="!ticketComprado" class="subtext">{{ subtext }}</p>
+  <form
+    [formGroup]="comprarTicketsForm"
+    #formDirective="ngForm"
+    class="comprar-tickets-form"
+    [style.display]="firstFormVisible ? 'flex' : 'none'"
+  >
+    <mat-form-field appearance="outline" id="ihatecss">
+      <mat-label>Seleccione pelicula</mat-label>
+      <mat-select
+        formControlName="pelicula"
+        (selectionChange)="updateIndexPelicula()"
+        [compareWith]="comparePeliculaId"
+        required
+      >
+        <mat-option
+          *ngFor="let pelicula of movies"
+          [value]="movies.indexOf(pelicula)"
+        >
+          {{ pelicula.title }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="pelicula?.invalid"
+        >Porfavor seleccione una pelicula.</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Seleccione funcion</mat-label>
+      <mat-select
+        formControlName="funcion"
+        (selectionChange)="updateIndexFuncion()"
+        required
+      >
+        <mat-option
+          *ngFor="let funcion of funciones[indexPelicula]"
+          [value]="funciones[indexPelicula].indexOf(funcion)"
+        >
+          {{ funcion }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="funcion?.invalid"
+        >Porfavor seleccione una funcion.</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field color="primary" appearance="outline">
+      <mat-label>Seleccione asiento</mat-label>
+      <mat-select formControlName="asiento" required>
+        <ng-container *ngIf="asientos[indexPelicula]">
+          <mat-option
+            *ngFor="let asiento of asientos[indexPelicula][indexFuncion]"
+            [value]="asiento"
+          >
+            {{ asiento }}
+          </mat-option>
+        </ng-container>
+      </mat-select>
+      <mat-error *ngIf="asiento?.invalid"
+        >Porfavor seleccione un asiento.</mat-error
+      >
+    </mat-form-field>
+    <div class="buttons-first-form">
+      <button
+        mat-stroked-button
+        color="basic"
+        (click)="continuar()"
+        class="continuar"
+      >
+        Continuar
+      </button>
+      <button
+        mat-stroked-button
+        color="basic"
+        (click)="comprarTicketsForm.reset()"
+        class="reset"
+      >
+        Reset
+      </button>
+    </div>
+  </form>
+  <form
+    [formGroup]="personaForm"
+    #formDirective="ngForm"
+    class="comprar-tickets-form"
+    [style.display]="secondFormVisible ? 'flex' : 'none'"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre Completo</mat-label>
+      <input matInput formControlName="nombre" required />
+      <mat-error *ngIf="nombre?.invalid"
+        >Porfavor ingrese su nombre completo.</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" required />
+      <mat-error *ngIf="email?.invalid">Porfavor ingrese un email.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Telefono</mat-label>
+      <input
+        matInput
+        formControlName="telefono"
+        id="phone"
+        type="tel"
+        mask="000 - 000 - 000"
+        required
+      />
+      <mat-error *ngIf="telefono?.invalid"
+        >Porfavor ingrese un telefono.</mat-error
+      >
+    </mat-form-field>
+    <div class="buttons-first-form">
+      <button
+        mat-stroked-button
+        color="basic"
+        (click)="finalizar()"
+        class="finalizar"
+      >
+        Finalizar
+      </button>
+      <button
+        mat-stroked-button
+        color="basic"
+        (click)="volver()"
+        class="reset volver"
+      >
+        Volver
+      </button>
+    </div>
+  </form>
+  <div *ngIf="ticketComprado" class="ticket-comprado">
+    <h2>Comprar Ticket</h2>
+    <h1>¡Felicitaciones {{ persona }}!</h1>
+    <img alt="logo de un ticket" src="../../../assets/ticket.png" />
+    <p class="top-p">
+      Tu entrada para la función {{ dateticket }} a las {{ hourticket }} ha sido
+      canjeada.
+    </p>
+    <p>¡Te esperamos!</p>
+  </div>
+</main>

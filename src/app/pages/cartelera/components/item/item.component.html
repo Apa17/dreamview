@@ -1,0 +1,7 @@
+<div>
+  <p>{{ movie?.title || '' }}</p>
+  <img [src]="movie?.poster" alt="item poster" />
+  <button mat-raised-button color="primary" (click)="goToComprarTickets()">
+    Comprar ticket
+  </button>
+</div>

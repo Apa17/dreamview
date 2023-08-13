@@ -1,0 +1,26 @@
+img {
+  max-height: 17rem;
+}
+div {
+  max-width: 185px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+p {
+  color: #fff;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  height: 2rem;
+  display: flex;
+  align-items: flex-end;
+}
+button {
+  border-radius: 0 0 0.75rem 0.75rem;
+}
