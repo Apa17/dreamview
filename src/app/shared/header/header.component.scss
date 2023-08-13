@@ -3,9 +3,10 @@ header {
   background-color: rgba(28, 28, 28, 0.5);
   width: 100%;
   height: 5rem;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
 
   .container {
     display: flex;
@@ -65,15 +66,29 @@ header {
     cursor: pointer;
   }
 }
+.menu {
+  display: none;
+}
+.menu.icon {
+  margin-right: 0;
+}
+.mat-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+}
 
 @media screen and (max-width: 920px) {
   nav {
     display: none;
   }
+  .menu {
+    display: block;
+  }
   header {
-    height: 40px;
+    height: 60px;
     img {
-      height: 20px;
+      height: 50px;
     }
   }
 }

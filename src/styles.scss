@@ -13,9 +13,9 @@ html {
 
 .pop-in-background {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   right: 0px;
-  z-index: 0;
+  z-index: -1;
 }
 .mat-mdc-select-arrow svg {
   fill: white !important;

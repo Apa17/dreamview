@@ -5,13 +5,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from '../app-routing.module';
-
+import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
+    MatMenuModule,
     AppRoutingModule
   ],
   declarations: [HeaderComponent],

@@ -1,16 +1,24 @@
 <img
   class="pop-in-background"
-  alt="pop in background"
+  alt="pop background image"
   src="../../../assets/pop.png"
+  [ngClass]="popVisible ? '' : 'd-none'"
 />
 <img
   class="pop-tarro-in-background"
   alt="pop tarro in background"
   src="../../../assets/pop-tarro.png"
+  [ngClass]="popVisible ? '' : 'd-none'"
+/>
+<img
+  class="pop-in-background-mobile"
+  alt="pop background image"
+  src="../../../assets/pop-mobile.png"
+  [ngClass]="popVisible ? '' : 'd-none'"
 />
 <main>
   <h1 *ngIf="!ticketComprado">Comprar Ticket</h1>
-  <p *ngIf="!ticketComprado">Selecciona una funcion</p>
+  <p *ngIf="!ticketComprado" class="subtext">{{ subtext }}</p>
   <form
     [formGroup]="comprarTicketsForm"
     #formDirective="ngForm"
@@ -96,9 +104,11 @@
     [style.display]="secondFormVisible ? 'flex' : 'none'"
   >
     <mat-form-field appearance="outline">
-      <mat-label>Nombre</mat-label>
+      <mat-label>Nombre Completo</mat-label>
       <input matInput formControlName="nombre" required />
-      <mat-error *ngIf="nombre?.invalid">Porfavor ingrese un nombre.</mat-error>
+      <mat-error *ngIf="nombre?.invalid"
+        >Porfavor ingrese su nombre completo.</mat-error
+      >
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>E-mail</mat-label>

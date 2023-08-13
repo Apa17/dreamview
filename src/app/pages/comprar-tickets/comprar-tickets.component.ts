@@ -29,6 +29,8 @@ export class ComprarTicketsComponent implements OnInit, OnDestroy {
   persona = 'Matias';
   dateticket = '30/01/2021';
   hourticket = '19:00';
+  subtext = 'Selecciona una funcion';
+  popVisible = true;
   s: Subscription = new Subscription();
 
   comprarTicketsForm = this.fb.group({
@@ -116,6 +118,9 @@ export class ComprarTicketsComponent implements OnInit, OnDestroy {
     if (this.comprarTicketsForm.invalid) return;
     this.firstFormVisible = false;
     this.secondFormVisible = true;
+    this.subtext = 'Completa tu información personal';
+
+    this.popVisible = false;
   }
 
   public findInvalidControls() {
@@ -139,7 +144,8 @@ export class ComprarTicketsComponent implements OnInit, OnDestroy {
   volver() {
     this.firstFormVisible = true;
     this.secondFormVisible = false;
-    alert('');
+    this.subtext = 'Selecciona una funcion';
+    this.popVisible = false;
   }
 
   comparePeliculaId(object1: number, object2: number) {

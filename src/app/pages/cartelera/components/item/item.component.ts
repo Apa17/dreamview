@@ -9,7 +9,7 @@ import { Movie } from 'src/app/models/movies';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent {
-  @Input() movie: Movie = johnWickMovie;
+  @Input() movie: Movie | undefined = johnWickMovie;
   @Input() number = 0;
 
   constructor(private router: Router) {}

@@ -207,6 +207,24 @@ $score-size: 70px;
   .carousel-title-and-text {
     overflow: hidden;
   }
+  .carousel-move-button {
+    img {
+      position: absolute;
+      bottom: 50%;
+    }
+    &.right-move {
+      margin-left: 10px;
+      img {
+        right: 10px;
+      }
+    }
+    &.left-move {
+      margin-right: 10px;
+      img {
+        left: 10px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 799px) {
@@ -231,7 +249,7 @@ $score-size: 70px;
   .carousel-box {
     padding-top: 15vh;
   }
-  main {
+  section {
     overflow: hidden;
   }
   .carousel-image {
@@ -242,27 +260,9 @@ $score-size: 70px;
       max-width: 100%;
     }
   }
-  .carousel-move-button {
-    img {
-      position: absolute;
-      bottom: 50%;
-    }
-    &.right-move {
-      margin-left: 10px;
-      img {
-        right: 10px;
-      }
-    }
-    &.left-move {
-      margin-right: 10px;
-      img {
-        left: 10px;
-      }
-    }
-  }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 530px) {
   .carousel-move-button {
     img {
       height: 30px;
@@ -274,5 +274,22 @@ $score-size: 70px;
     width: $mobile-score-size;
     height: $mobile-score-size;
     margin-left: -$mobile-score-size;
+    img {
+      margin-top: 2px;
+      margin-bottom: -4px;
+      width: 15px;
+      height: 15px;
+    }
+    p {
+      font-size: 0.5rem;
+    }
+    .imdb {
+      margin-bottom: 3px;
+    }
+  }
+  .carousel-buttons {
+    a p {
+      font-size: 0.8rem;
+    }
   }
 }

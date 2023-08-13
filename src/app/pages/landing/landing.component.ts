@@ -21,9 +21,10 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.movieservice
-      .getMovies()
-      .subscribe((peliculas) => (this.movies = this.movies.concat(peliculas)));
+    this.movieservice.getMovies().subscribe((peliculas) => {
+      console.log(peliculas);
+      this.movies = this.movies.concat(peliculas);
+    });
   }
 
   goToComprarTickets() {
